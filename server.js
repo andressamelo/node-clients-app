@@ -4,8 +4,8 @@ import { fastify } from 'fastify'
 import { DatabasePostgres } from './database-postgres.js'
 
 const server = fastify()
-const database = new DatabaseMemory()
-// const database = new DatabasePostgres()
+// const database = new DatabaseMemory()
+const database = new DatabasePostgres()
 
 server.post('/clients', async (request, reply) => {
    const { client_name, client_phone, client_email, date_follow_up, name, birthday_date, party_date, party_address, details, price } = request.body
