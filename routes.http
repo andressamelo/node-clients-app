@@ -1,4 +1,4 @@
-POST https://node-do-zero-h3bv.onrender.com/clients
+POST https://node-clients-app.onrender.com/clients
 Content-type: application/json
 
 {
@@ -9,11 +9,11 @@ Content-type: application/json
 
 ###
 
-GET https://node-do-zero-h3bv.onrender.com/clients
+GET https://node-clients-app.onrender.com/clients
 
 ###
 
-PUT https://node-do-zero-h3bv.onrender.com/videos/2a643202-0d5b-4363-a5d4-8159790df271
+PUT https://node-clients-app.onrender.com/clients/2a643202-0d5b-4363-a5d4-8159790df271
 Content-type: application/json
 
 {
@@ -24,4 +24,4 @@ Content-type: application/json
 
 ###
 
-DELETE https://node-do-zero-h3bv.onrender.com/videos/bfc7bec0-d88e-488f-8e1f-e4ddbe983f4c
+DELETE https://node-clients-app.onrender.com/clients/bfc7bec0-d88e-488f-8e1f-e4ddbe983f4c
