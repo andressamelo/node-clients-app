@@ -1,6 +1,6 @@
 {
-  "name": "do-zero",
-  "version": "1.0.0",
+  "name": "clients-app",
+  "version": "0.0.1",
   "description": "",
   "main": "server.js",
   "type": "module",

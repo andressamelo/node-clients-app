@@ -3,32 +3,48 @@ import { sql } from './db.js'
 
 export class DatabasePostgres {
     async list(search) {
-        let videos
+        let clients
 
         if (search) {
-            videos = await sql`select * from videos where title ilike ${'%' + search + '%'}`
+            clients = await sql`select * from clients where client_name ilike ${'%' + search + '%'}`
         } else {
-            videos = await sql`select * from videos`
+            clients = await sql`select * from clients`
         }
 
-        return videos
+        return clients
     }
 
-    async create(video) {
-        const videoId = randomUUID()
-        const { title, description, duration } = video
+    async create(client) {
+        const clientId = randomUUID()
+        const { client_name, client_phone,
+            client_email,
+            date_follow_up,
+            name,
+            birthday_date,
+            party_date,
+            party_address,
+            details,
+            price } = client
 
-        await sql`insert into videos (id, title, description, duration) VALUES (${videoId}, ${title}, ${description}, ${duration})`
+        await sql`insert into clients (id, client_name, client_phone, client_email, date_follow_up, name, birthday_date, party_date, party_address, details, price) VALUES (${clientId}, ${client_name}, ${client_phone}, ${client_email}, ${date_follow_up}, ${name}, ${birthday_date}, ${party_date}, ${party_address}, ${details}, ${price})`
 
     }
 
-    async update(id, video) {
-        const { title, description, duration } = video
+    async update(id, client) {
+        const { client_name, client_phone,
+            client_email,
+            date_follow_up,
+            name,
+            birthday_date,
+            party_date,
+            party_address,
+            details,
+            price } = client
 
-        await sql`update videos set title = ${title}, description = ${description}, duration = ${duration} WHERE id = ${id}`
+        await sql`update clients set client_name = ${client_name}, client_phone = ${client_phone}, client_email = ${client_email}, date_follow_up = ${date_follow_up},  name = ${name}, birthday_date = ${birthday_date}, party_date = ${party_date}, party_address = ${party_address}, details = ${details}, price = ${price} WHERE id = ${id}`
     }
 
     async delete(id) {
-        await sql`delete from videos where id = ${id} `
+        await sql`delete from clients where id = ${id} `
     }
 }

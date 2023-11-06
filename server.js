@@ -4,46 +4,60 @@ import { fastify } from 'fastify'
 import { DatabasePostgres } from './database-postgres.js'
 
 const server = fastify()
-// const database = new DatabaseMemory()
-const database = new DatabasePostgres()
+const database = new DatabaseMemory()
+// const database = new DatabasePostgres()
 
-server.post('/videos', async (request, reply) => {
-   const { title, description, duration } = request.body
+server.post('/clients', async (request, reply) => {
+   const { client_name, client_phone, client_email, date_follow_up, name, birthday_date, party_date, party_address, details, price } = request.body
    
     await database.create({
-        title,
-        description,
-        duration,
+        client_name,
+        client_phone,
+        client_email,
+        date_follow_up,
+        name,
+        birthday_date,
+        party_date,
+        party_address,
+        details,
+        price,
     })
 
     return reply.status(201).send()
 })
 
-server.get('/videos', async (request) => {
+server.get('/clients', async (request) => {
     const search = request.query.search
 
-    const videos = await database.list(search)
+    const clients = await database.list(search)
 
-    return videos
+    return clients
 })
 
-server.put('/videos/:id', async (request, reply) => {
-    const videoId = request.params.id
-    const { title, description, duration } = request.body
+server.put('/clients/:id', async (request, reply) => {
+    const clientId = request.params.id
+    const { client_name, client_phone, client_email, date_follow_up, name, birthday_date, party_date, party_address, details, price } = request.body
 
-    await database.update(videoId, {
-        title,
-        description,
-        duration,
+    await database.update(clientId, {
+        client_name,
+        client_phone,
+        client_email,
+        date_follow_up,
+        name,
+        birthday_date,
+        party_date,
+        party_address,
+        details,
+        price,
     })
 
     return reply.status(204).send()
 })
 
-server.delete('/videos/:id', async (request, reply) => {
-    const videoId = request.params.id
+server.delete('/clients/:id', async (request, reply) => {
+    const clientId = request.params.id
 
-    await database.delete(videoId)
+    await database.delete(clientId)
     return reply.status(204).send()
 })
 
